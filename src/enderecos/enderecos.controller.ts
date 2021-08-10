@@ -18,7 +18,7 @@ export class EnderecosController {
         @Body()
         data: CriarEnderecoDTO
 
-    ): Promise<Endereco[]> {
+    ): Promise<Endereco> {
         return await this.enderecosService.criarEndereco(data);
     }
 }

@@ -8,23 +8,20 @@ import { EnderecoRepository } from './repository/EnderecoRepository';
 export class EnderecosService {
 
     constructor(
+
         @InjectRepository(EnderecoRepository)
         private enderecoRepository: EnderecoRepository,
+
     ) { }
 
 
-    async criarEndereco(data: CriarEnderecoDTO): Promise<Endereco[]> {
-
-        const endereco = this.fromDTO(data);
-
+    async criarEndereco(data: CriarEnderecoDTO): Promise<Endereco> {
+        const endereco = this.fromDTO(data)
         await this.enderecoRepository.saveEnd(endereco);
-
-        return [endereco];
-
+        return endereco;
     }
 
     fromDTO(data: CriarEnderecoDTO): Endereco {
-
         const endereco = new Endereco();
 
         endereco.bairro = data.bairro;
@@ -34,9 +31,8 @@ export class EnderecosService {
         endereco.endereco = data.endereco;
         endereco.estado = data.estado;
         endereco.numero = data.numero;
-
+        endereco.pessoa_id = data.pessoa_id ? data.pessoa_id : undefined;
 
         return endereco;
-
     }
 }

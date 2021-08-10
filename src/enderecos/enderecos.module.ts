@@ -8,7 +8,7 @@ import { EnderecoRepository } from './repository/EnderecoRepository';
 @Module({
   imports: [
     TypeOrmModule.forFeature([EnderecoRepository]),
-    PessoasModule
+    // PessoasModule
   ],
   controllers: [EnderecosController],
   providers: [EnderecosService],

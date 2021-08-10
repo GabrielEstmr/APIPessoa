@@ -1,5 +1,7 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { Endereco } from 'src/enderecos/endereco.entity';
+import { EnderecosService } from 'src/enderecos/enderecos.service';
 import { CriarPessoaDTO } from './dtos/criar.pessoa.dto';
 import { Pessoa } from './pessoas.entity';
 import { PessoaRepository } from './repository/PessoasRepository';
@@ -9,8 +11,12 @@ export class PessoasService {
 
 
     constructor(
+
+        private readonly enderecoService: EnderecosService,
+
         @InjectRepository(PessoaRepository)
         private pessoaRepository: PessoaRepository,
+
     ) { }
 
 
@@ -19,14 +25,24 @@ export class PessoasService {
 
         const pessoa = this.fromDTO(data);
         const { email } = data;
-        const pessoaAlreadyExits = await this.pessoaRepository.findByEmailPessoa(email);
+        const pessoaAlreadyExits = await this.pessoaRepository.findByEmail(email);
+
         if (pessoaAlreadyExits) {
             throw new BadRequestException(`Pessoa com o email ${email} já cadastrada no sistema`)
         }
 
-        await this.pessoaRepository.savePessoa(pessoa);
+        await this.pessoaRepository.saveData(pessoa);
+
+
+        let enderecoArray: Array<Endereco>;
+        data.enderecos.forEach(async e => {
+            e.pessoa_id = pessoa.id;
+            const endereco = await this.enderecoService.criarEndereco(e);
+            enderecoArray.push(endereco);
+        });
 
         return pessoa;
+
 
     }
 
