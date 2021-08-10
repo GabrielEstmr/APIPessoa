@@ -34,7 +34,6 @@ export class EnderecosService {
         endereco.endereco = data.endereco;
         endereco.estado = data.estado;
         endereco.numero = data.numero;
-        endereco.pessoa_id = data.pessoa_id;
 
 
         return endereco;

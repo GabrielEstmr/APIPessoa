@@ -1,9 +1,9 @@
-import { Column, CreateDateColumn, UpdateDateColumn, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, CreateDateColumn, UpdateDateColumn, Entity, PrimaryGeneratedColumn, BaseEntity } from 'typeorm';
 
 
 
 @Entity('TDPESSOA')
-export class Pessoa {
+export class Pessoa extends BaseEntity {
 
     @PrimaryGeneratedColumn('uuid')
     id: string;

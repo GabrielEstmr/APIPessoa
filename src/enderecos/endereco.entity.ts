@@ -1,10 +1,11 @@
-import { Column, CreateDateColumn, UpdateDateColumn, Entity, PrimaryGeneratedColumn, JoinColumn, ManyToOne } from 'typeorm';
-import { Pessoa } from './pessoas.entity';
+// import { Pessoa } from '../pessoas/pessoas.entity';
+import { Column, CreateDateColumn, UpdateDateColumn, Entity, PrimaryGeneratedColumn, ManyToOne, JoinColumn, BaseEntity } from 'typeorm';
+// import { Pessoa } from './pessoas.entity';
 
 
 
 @Entity('TDEND')
-export class Endereco {
+export class Endereco extends BaseEntity {
 
     @PrimaryGeneratedColumn('uuid')
     id: string;

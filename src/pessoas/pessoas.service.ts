@@ -14,6 +14,7 @@ export class PessoasService {
     ) { }
 
 
+
     async criarPessoa(data: CriarPessoaDTO) {
 
         const pessoa = this.fromDTO(data);
@@ -33,7 +34,6 @@ export class PessoasService {
 
         const pessoa = new Pessoa();
 
-        pessoa.id = data.id;
         pessoa.CNPJ = data.CNPJ;
         pessoa.CPF = data.CPF;
         pessoa.celular = data.celular;

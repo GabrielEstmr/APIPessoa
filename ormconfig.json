@@ -6,10 +6,10 @@
     "password": "docker",
     "database": "APIPESSOAS",
     "entities": [
-        "./src/**/*.entity.ts"
+        "./src/**/*.entity{.ts,.js}"
     ],
     "migrations": [
-        "./src/database/migrations/*.ts"
+        "./src/database/migrations/*{.ts,.js}"
     ],
     "cli": {
         "migrationsDir": "./src/database/migrations"

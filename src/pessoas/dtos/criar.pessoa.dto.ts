@@ -1,6 +1,4 @@
 export class CriarPessoaDTO {
-
-    id: string;
     tipo_pessoa: string;
     nome: string;
     razao_social: string;

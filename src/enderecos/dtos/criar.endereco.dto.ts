@@ -7,7 +7,6 @@ export class CriarEnderecoDTO {
     cidade: string;
     estado: string;
     cep: string;
-    pessoa_id: string;
 
 
 }
