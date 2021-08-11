@@ -1,11 +1,23 @@
+
+## Link da pock de Microserviços em NESTJS:
+
+====>>> https://github.com/GabrielEstmr/NESTJS_MIRCROSERVICES
+
+
+## Link da pock API NodeJS TypeScript e Postgres com Express, autenticação via JWT, Log estruturados de eventos, Documentação via Swagger:
+
+Há respostas teóricas também
+
+====>>> https://github.com/GabrielEstmr/ApiCEP
+
+
 ## Description
 
 API busca de CEP.
 
 1. Criar container local -do banco usando -docker: "docker run --name ceppostgress -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres"
         Baixar os pacotes das bibliotecas: "yarn install"
-        Gerar as Rotas e a -documentação via TSOA: "yarn generate"
-        Rodar a aplicação em Ambiente de Desenvolvimento: "yarn dev:server"
+        Rodar a aplicação em Ambiente de Desenvolvimento: "yarn start:server"
 ## Installation
 
 ```bash
@@ -46,22 +58,9 @@ $ yarn test
  http://localhost:3000/
 
 # -documentação Swagger:
- http://localhost:3000/docs/
+ http://localhost:3000/api
 
 # Coverage Report JEST
 yarn test:cov
 
 ```
-
-## Requisitos
-
-## Link da pock de Microserviços em NESTJS:
-
-====>>> https://github.com/GabrielEstmr/NESTJS_MIRCROSERVICES
-
-
-## Link da pock API NodeJS TypeScript e Postgres com Express, autenticação via JWT, Log estruturados de eventos, Documentação via Swagger:
-
-Há respostas teóricas também
-
-====>>> https://github.com/GabrielEstmr/ApiCEP
