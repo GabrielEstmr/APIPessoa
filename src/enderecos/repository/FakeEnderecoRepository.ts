@@ -1,17 +1,25 @@
+
 import { EntityRepository, Repository } from "typeorm";
+import { uuid } from "uuidv4";
 import { CriarEnderecoDTO } from "../dtos/criar.endereco.dto";
 import { Endereco } from "../endereco.entity";
 import IEnderecoRepository from "./EnderecosRepository.Interface";
 
+
 @EntityRepository(Endereco)
-export class EnderecoRepository extends Repository<Endereco> implements IEnderecoRepository {
+class FakeEnderecoRepository extends Repository<Endereco> implements IEnderecoRepository {
 
 
     public async saveEnd(data: CriarEnderecoDTO): Promise<void> {
-        await this.save(data);
+        Object.assign(data, {
+            id: uuid(),
+            created_at: new Date(),
+            updated_at: new Date(),
+        })
     }
 
 
 
-
 }
+
+export default FakeEnderecoRepository;

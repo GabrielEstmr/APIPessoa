@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Post, UsePipes, ValidationPipe } from '@nestjs/common';
 import { CriarEnderecoDTO } from './dtos/criar.endereco.dto';
 import { Endereco } from './endereco.entity';
 import { EnderecosService } from './enderecos.service';
@@ -13,6 +13,7 @@ export class EnderecosController {
     }
 
     @Post()
+    @UsePipes(ValidationPipe)
     async criarPessoa(
 
         @Body()

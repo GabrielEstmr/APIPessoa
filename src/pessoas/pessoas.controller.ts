@@ -8,10 +8,10 @@ import { CriarPessoaCustomPipe } from './pipes/criar.pessoa.custompipe';
 @Controller('pessoas')
 export class PessoasController {
 
-    private readonly clientesService: PessoasService = undefined;
+    private readonly pessoasService: PessoasService = undefined;
 
-    constructor(clientesService: PessoasService) {
-        this.clientesService = clientesService;
+    constructor(pessoasService: PessoasService) {
+        this.pessoasService = pessoasService;
     }
 
     @Post()
@@ -22,6 +22,6 @@ export class PessoasController {
         data: CriarPessoaDTO
 
     ): Promise<Pessoa> {
-        return await this.clientesService.criarPessoa(data);
+        return await this.pessoasService.criarPessoa(data);
     }
 }

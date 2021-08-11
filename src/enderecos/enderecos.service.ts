@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { CriarEnderecoDTO } from './dtos/criar.endereco.dto';
 import { Endereco } from './endereco.entity';
 import { EnderecoRepository } from './repository/EnderecoRepository';
+import IEnderecoRepository from './repository/EnderecosRepository.Interface';
 
 @Injectable()
 export class EnderecosService {
@@ -10,7 +11,7 @@ export class EnderecosService {
     constructor(
 
         @InjectRepository(EnderecoRepository)
-        private enderecoRepository: EnderecoRepository,
+        private enderecoRepository: IEnderecoRepository,
 
     ) { }
 

@@ -1,42 +1,42 @@
-import { PipeTransform, BadRequestException } from '@nestjs/common';
+import { BadRequestException } from '@nestjs/common';
 import { CriarPessoaDTO } from '../dtos/criar.pessoa.dto';
 import { TipoPessoa } from '../interfaces/TipoPessoa.interface';
 
 
-export class CriarPessoaCustomPipe implements PipeTransform {
+export class ValidationDadosPessoa {
 
     private readonly TipoPessoaPermitidos = [
         TipoPessoa.PESSOA_FISICA,
         TipoPessoa.PESSOA_JURIDICA,
     ];
 
-    transform(value: CriarPessoaDTO) {
-        const status = value.tipo_pessoa;
+    transform(data: CriarPessoaDTO) {
+        const status = data.tipo_pessoa;
 
         if (!this.checkTipoPessoa(status)) {
             throw new BadRequestException(`${status} é um status inválido`);
         }
 
         if (status === TipoPessoa.PESSOA_FISICA) {
-            if (!value.CPF) {
+            if (!data.CPF) {
                 throw new BadRequestException(`CFP é um valor inválido`);
             }
-            if (!value.sexo) {
+            if (!data.sexo) {
                 throw new BadRequestException(`Sexo é um valor inválido`);
             }
-            if (!value.data_nascimento) {
+            if (!data.data_nascimento) {
                 throw new BadRequestException(`Data Nascimento é um valor inválido`);
             }
         } else {
-            if (!value.razao_social) {
+            if (!data.razao_social) {
                 throw new BadRequestException(`Razao Social é um valor inválido`);
             }
-            if (!value.CNPJ) {
+            if (!data.CNPJ) {
                 throw new BadRequestException(`CNPJ é um valor inválido`);
             }
         }
 
-        return value;
+        return data;
     }
 
     private checkTipoPessoa(status: any) {

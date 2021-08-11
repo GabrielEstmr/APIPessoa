@@ -1,10 +1,11 @@
 import { EntityRepository, Repository } from "typeorm";
 import { Pessoa } from "../pessoas.entity";
+import IPessoasRepository from "./PessoasRepository.Interface";
 // import IPessoasRepository from "./PessoasRepository.Interface";
 
 
 @EntityRepository(Pessoa)
-export class PessoaRepository extends Repository<Pessoa> {
+export class PessoaRepository extends Repository<Pessoa> implements IPessoasRepository {
 
     public async saveData(data: Pessoa): Promise<void> {
         await this.save(data);

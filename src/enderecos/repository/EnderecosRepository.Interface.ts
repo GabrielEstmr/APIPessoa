@@ -2,5 +2,5 @@ import { CriarEnderecoDTO } from "../dtos/criar.endereco.dto";
 
 
 export default interface IEnderecoRepository {
-    save(data: CriarEnderecoDTO): Promise<void>;
+    saveEnd(data: CriarEnderecoDTO): Promise<void>;
 }
